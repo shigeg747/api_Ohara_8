@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お助けマップ</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+<main>
+    <div id="myMap" style='width:100%;height:300px;' class="myMap"></div>
+
+    <div class="form-wrapper">
+        <form method="POST" name= "form" class="wrapper">
+            <dl>
+                <div class="form-inner">
+                    <dt class="form-title">お名前：</dt>
+                    <dd class="form-item"><input type="text" name="username" id="username" class="form-parts" value=""></dd>
+                </div>
+                <div class="form-inner">
+                    <dt class="form-title">見出し：</dt>
+                    <dd class="form-item"><input type="text" name="title" id="title" class="form-parts" value=""></dd>
+                </div>
+                <div class="form-inner">
+                    <dt class="form-title">内　容：</dt>
+                    <dd class="form-item"><textarea name="contents" id="contents" rows="2" class="form-parts" value=""></textarea></dd>
+                </div>
+                <div class="form-inner">
+                    <dt class="form-title">住　所：</dt>
+                    <dd class="form-item"><input type="text" name="address" id="address" class="form-parts" value=""></dd>
+                </div>
+                <div class="form-inner_submit">
+                    <dt class="form-title">年　齢：</dt>
+                    <dd><select name="age" id="age" class="select"></select></dd>
+                    <input type="submit" value="送信" id="send" class="send">
+                </div>
+            </dl>
+
+        </form>
+    </div>
+    <div id="output"></div>
+
+
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase.js"></script>
+
+<script src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=ApMVejkcdyFR1E4P1q9-eD8LxhJtsnQffOA7xL4lqxzoPMTL5LGhbdFQxvFipTS9' async defer></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

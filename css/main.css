@@ -1,0 +1,199 @@
+/* @media screen and (max-width:700px){ */
+
+HTML CSS Result
+
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.myMap{
+    position: fixed;
+}
+
+/* ----------------------
+     form
+-----------------------*/
+.form-wrapper{
+    box-sizing: border-box;
+    width: 100%;
+    margin: auto;
+    padding: 16px 20px;
+}
+
+.form-inner{
+    box-sizing: border-box;
+    display: flex;
+    justify-content:right;
+    /* flex-wrap: wrap; */
+    /* padding: 30px 0; */
+}
+
+.form-inner_submit{
+    box-sizing: border-box;
+    display: flex;
+    right: 0;
+    justify-content:right;
+}
+
+.form-title{
+    box-sizing: border-box;
+    width: 68px;
+    line-height: 1.6;
+    padding: 3px 0 0 0;
+}
+
+.form-item{
+    width: 270px;
+    margin: 0 0 10px 0;
+}
+
+.form-parts{
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    width: 98%;
+    /* padding: 2px; */
+    border: solid 1px #909090;
+    font-size: 1rem;
+    padding: 5px 5px;
+    resize: none;
+}
+
+.select{
+    padding: 6px 0;
+}
+
+.send{
+    appearance: none;
+    text-align: center;
+    padding: o 20px;
+    margin: 0 0 0 20px;
+    width: 186px;
+    border: none;
+    transition: 0.3s;
+}
+
+/* .send:hover{
+        background: #676767;
+        color: #fff;
+  } */
+
+
+/* ----------------------
+     Infobox Style
+-----------------------*/
+.customInfobox {
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    width: 100%;
+    /* border-radius: 10px; */
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    /* font-size:12px; */
+    /* pointer-events:auto !important; */
+}
+
+/* .customInfobox:hover{
+    background-color: rgba(255, 170, 0, 0.8);
+    color: white;
+    cursor: pointer;
+
+} */
+
+.testline{
+    display: flex;
+}
+
+.csNumber{
+    padding: 0 15px;
+    top: 5px; 
+}
+
+.csUsername{
+    padding: 0 15px 0 0;
+}
+.customInfobox .title {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.customInfobox .age {
+    font-size: 10px;
+    padding: 5px 15px 7px 0;
+}
+
+.mirubtn {
+    text-decoration: none;
+    font-size: 8px;
+    cursor: pointer;
+    pointer-events:auto !important;
+}
+
+/* ----------------------
+     modal Style 
+-----------------------*/
+.videoframe{
+    position: absolute;
+    position: 50% 50%;
+    margin: auto;
+    width:auto;
+    height:auto;
+    width:1000px;
+    height:700px;
+    z-index: 900;
+}
+.modal-content{
+    width: 70%;
+    margin: 0;
+    padding: 20px 20px;
+    background: #fff;
+    position: fixed;
+    display: none;
+    z-index: 800;
+}
+
+.modal-overlay{
+    z-index: 1;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-color: rgba( 0, 0, 0, 0.75 );
+}
+
+.topline {
+    display:flex;
+    justify-content: space-between;
+}
+
+.modal-content .username {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.modal-content .title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-content .contents {
+    font-size: 12px;
+    line-height: 1.6;
+    padding: 10px 0 20px 0;
+}
