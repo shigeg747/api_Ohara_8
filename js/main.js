@@ -4,7 +4,7 @@
 
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "API-KEY",
+    apiKey: "AIzaSyAq0zOMphrdr-ABkP14k4e-mO8rQR_WF5I",
     authDomain: "someone-wants-to-help-anyone.firebaseapp.com",
     databaseURL: "https://someone-wants-to-help-anyone-default-rtdb.firebaseio.com",
     projectId: "someone-wants-to-help-anyone",
@@ -78,6 +78,8 @@ function GetMap(){
         lat = position.coords.latitude;
         lon = position.coords.longitude;
         latlon.push({lat,lon});
+        let locationCenter = [lat, lon]
+        
 
         // 初期化お助けマン視点でマップ表示
         let map = new Microsoft.Maps.Map('#myMap',{
@@ -85,6 +87,7 @@ function GetMap(){
             mapTypeId: Microsoft.Maps.MapTypeId.load,
             zoom:15 //0=zoomUp[ 1~20 ]
         });
+        
 
         let searchManager; //SearchObject用
 
@@ -211,17 +214,22 @@ $(document).on('click', '#customInfobox', function(){
                                 </div>
                                 <div class="title" id="title">${title}</div>
                                 <div class="contents" id="contents">${contents}</div>
-                                <input type="button" class="videogo" id="videogo" value="ビデオ通話する">
-                                <input type="button" class="modal-close" id="modal-close" value="閉じる">
+                                <input type="button" class="videogo pure-button marginbttom10px" id="videogo " value="ビデオ通話する">
+                                <input type="button" class="modal-close pure-button" id="modal-close" value="閉じる">
                             </div>`;
-    // console.log(infoboxTemplate);
 
     $('main').append(infoboxTemplate);
 
-    
-    $('#videogo').on('click',function(){
+    // document.getElementById('videogo').addEventListener('onclick',function(){
+    //     alert("てすと")
 
-        window.location.href = "vdsk.html";
+    // });
+    
+    $('.videogo').on('click',function(){
+
+        $('#videoWindow').fadeIn(500);
+        scrollTo(0, 0);
+        // step1()
 
         // #modal-content,#modal-overlayをフェードアウトして
         $('#modal-content,#modal-overlay').fadeOut('solw', function(){
@@ -355,6 +363,8 @@ $(document).on('click', '#customInfobox', function(){
         // speech.onend = () => {
         //     speech.start()
         // };
+
+        
 
 
 

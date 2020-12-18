@@ -2,12 +2,13 @@
 $(function() {
   // Peer object
   const peer = new Peer({
-    key:   'API-KEY',
+    key:   'ca241236-c9e2-4ec8-8ba1-8ed0c75e588e',
     debug: 3,
   });
 
   let localStream;
   let room;
+
   peer.on('open', () => {
     $('#my-id').text(peer.id);
     // Get things started
@@ -105,13 +106,20 @@ $(function() {
     $('#step3').show();
   }
 
-
 });
 
 
+// $('#videogo').on('click', function(){
+//   alert('がんばれ')
+//   $('#videoWindow').fadeIn(3000);
+// })
+
+
 $('#toMap').on('click', function(){
-  location.href = 'index.html';
+  $('#videoWindow').fadeOut(1500);
 })
+
+
 
 
 
