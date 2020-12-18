@@ -1,47 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お助けマップ</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css">
+    <!-- <link rel="stylesheet" href="css/style_vd.css"> -->
 
 </head>
 <body>
 <main>
-    <div id="myMap" style='width:100%;height:300px;' class="myMap"></div>
 
-    <div class="form-wrapper">
-        <form method="POST" name= "form" class="wrapper">
-            <dl>
-                <div class="form-inner">
-                    <dt class="form-title">お名前：</dt>
-                    <dd class="form-item"><input type="text" name="username" id="username" class="form-parts" value=""></dd>
-                </div>
-                <div class="form-inner">
-                    <dt class="form-title">見出し：</dt>
-                    <dd class="form-item"><input type="text" name="title" id="title" class="form-parts" value=""></dd>
-                </div>
-                <div class="form-inner">
-                    <dt class="form-title">内　容：</dt>
-                    <dd class="form-item"><textarea name="contents" id="contents" rows="2" class="form-parts" value=""></textarea></dd>
-                </div>
-                <div class="form-inner">
-                    <dt class="form-title">住　所：</dt>
-                    <dd class="form-item"><input type="text" name="address" id="address" class="form-parts" value=""></dd>
-                </div>
-                <div class="form-inner_submit">
-                    <dt class="form-title">年　齢：</dt>
-                    <dd><select name="age" id="age" class="select"></select></dd>
-                    <input type="submit" value="送信" id="send" class="send">
-                </div>
-            </dl>
+    <!---------------------------------   検索セクション  ----------------------------------------->
+    <div class="videosearch">
+        <div id="searchindex" class="searchindex">
+            <div id="myMap" style='width:100%;height:300px;' class="myMap"></div>
 
-        </form>
+            <div class="form-wrapper">
+                <form method="POST" name= "form" class="wrapper">
+                    <dl>
+                        <div class="form-inner">
+                            <dt class="form-title">お名前：</dt>
+                            <dd class="form-item"><input type="text" name="username" id="username" class="form-parts" value=""></dd>
+                        </div>
+                        <div class="form-inner">
+                            <dt class="form-title">見出し：</dt>
+                            <dd class="form-item"><input type="text" name="title" id="title" class="form-parts" value=""></dd>
+                        </div>
+                        <div class="form-inner">
+                            <dt class="form-title">内　容：</dt>
+                            <dd class="form-item"><textarea name="contents" id="contents" rows="2" class="form-parts" value=""></textarea></dd>
+                        </div>
+                        <div class="form-inner">
+                            <dt class="form-title">住　所：</dt>
+                            <dd class="form-item"><input type="text" name="address" id="address" class="form-parts" value=""></dd>
+                        </div>
+                        <div class="form-inner_submit">
+                            <dt class="form-title">年　齢：</dt>
+                            <dd><select name="age" id="age" class="select"></select></dd>
+                            <input type="submit" value="送信" id="send" class="send">
+                        </div>
+                    </dl>
+
+                </form>
+            </div>
+            <div id="output"></div>
+        </div>
+
+        <!---------------------------------   検索セクション  ----------------------------------------->
+
+
+
+        <!---------------------------------   ビデオ通話セクション ----------------------------------------->
+
+        <div id="videoWindow" class="pure-g">
+
+            <!-- Video area -->
+            <div class="pure-u-2-3" id="video-container">
+            <div id="their-videos" width="375px" class="marginbttom20px"></div>
+            <video id="my-video" muted="true" autoplay playsinline width="40%"></video>
+            </div>
+    
+            <!-- Steps -->
+            <div class="pure-u-1-3">
+        
+            <!-- Get local audio/video stream -->
+            <div id="step1">
+                <p>Please click `allow` on the top of the screen so we can access your webcam and microphone for calls.</p>
+                <div id="step1-error">
+                <p>Failed to access the webcam and microphone. Make sure to run this demo on an http server and click allow when asked for permission by the browser.</p>
+                <a href="#" class="pure-button pure-button-error" id="step1-retry">Try again</a>
+                </div>
+            </div>
+            <div class='pidname'>
+                <!-- <p>Your id: <span id="my-id">...</span></p> -->
+            </div>
+            <!-- Make calls to others -->
+            <div id="step2">
+                <h3 class="states">通話待機中</h3>
+                <form id="make-call" class="pure-form">
+                    <p class="notice marginbttom20px">依頼者の名字をひらがなで記入して「 通話開始 」ボタンを押してください</p>
+                    <div class="fillbox">
+                        <p><input type="text" placeholder="依頼者お名前" id="join-room" class=" marginbttom20px"></p>
+                        <button class="pure-button pure-button-success marginbttom10px" type="submit">通話開始</button>
+                        <button class="pure-button pure-button-error marginbttom10px" id="toMap"type="submit">地図へ戻る</button>
+                    </div>
+                </form>
+            </div>
+    
+            <!-- Call in progress -->
+            <div id="step3">
+                <p class="marginbttom20px states"><span id="room-id">...</span>さんと通話中</p>
+                <button class="pure-button pure-button-error" id="end-call"type="submit">通話終了</button>
+            </div>
+            </div>
+        </div>
+
+        <!--------------------------------- ビデオ通話セクション ----------------------------------------->
+
     </div>
-    <div id="output"></div>
-
 
 </main>
 
@@ -51,7 +109,9 @@
 <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase.js"></script>
 
 <script src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=ApMVejkcdyFR1E4P1q9-eD8LxhJtsnQffOA7xL4lqxzoPMTL5LGhbdFQxvFipTS9' async defer></script>
-<script src="js/main.js"></script>
+<script type="text/javascript" src="//cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 
 </body>
 </html>
